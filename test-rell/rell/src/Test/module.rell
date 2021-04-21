@@ -1,0 +1,21 @@
+//import lib.example;
+
+entity city { name; }
+
+
+query is_city_registered (city_name: text): boolean {
+	return (city @? { city_name }) != null;
+}
+
+// this one works
+query healthcheck () {
+	log('healthy');
+	return 'healthy';
+}
+
+// this one doesn't
+operation insert_city (name) {
+//	create city (name = example.decorate(name));	
+	log('insert_city', name);
+	create city (name = name);	
+}
