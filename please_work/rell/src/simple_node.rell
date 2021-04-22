@@ -1,0 +1,9 @@
+entity city { key name; }
+
+operation insert_city (name) {
+    create city (name);
+}
+
+query is_city_registered(city_name: text): boolean {
+	return (city @? { city_name }) != null;
+}
